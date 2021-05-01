@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('pre-build') {
-        sh 'chmod +x ./gradlew'
+            steps {
+                sh 'chmod +x ./gradlew'
+            }
         }
         stage('Build') {
             steps {
