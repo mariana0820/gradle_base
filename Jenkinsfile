@@ -6,6 +6,11 @@ pipeline {
                 sh 'chmod +x ./gradlew'
             }
         }
+        stage('test') {
+            steps{
+                sh './gradlew clean test --no-daemon'
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Running build automation'
