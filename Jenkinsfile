@@ -6,7 +6,7 @@ pipeline {
                 sh 'chmod +x ./gradlew'
             }
         }
-        stage('test') {
+        stage('unit-test') {
             steps{
                 sh './gradlew clean test --no-daemon'
             }
@@ -15,6 +15,12 @@ pipeline {
             steps {
                 echo 'Running build automation'
                 sh './gradlew build --no-daemon'
+            }
+        }
+        stage('DockerTest') {
+            steps {
+                echo 'Testing docker installation'
+                sh 'docker ps -a'
             }
         }
     }
